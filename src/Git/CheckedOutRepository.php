@@ -27,8 +27,8 @@ final class CheckedOutRepository
                 return new self($path);
             }
 
-            $testPath = dirname($path);
-        } while ($testPath !== '.');
+            $testPath = dirname($testPath);
+        } while ($testPath !== '.' && $testPath !== DIRECTORY_SEPARATOR);
 
         Psl\invariant_violation('Directory "%s" is not in a GIT repository.', $path);
     }
