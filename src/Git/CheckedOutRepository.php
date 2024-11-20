@@ -9,6 +9,8 @@ use Psl\Filesystem;
 
 use function dirname;
 
+use const DIRECTORY_SEPARATOR;
+
 /** @psalm-immutable */
 final class CheckedOutRepository
 {
@@ -24,7 +26,7 @@ final class CheckedOutRepository
 
         do {
             if (Filesystem\is_directory($testPath . '/.git')) {
-                return new self($path);
+                return new self($testPath);
             }
 
             $testPath = dirname($testPath);
